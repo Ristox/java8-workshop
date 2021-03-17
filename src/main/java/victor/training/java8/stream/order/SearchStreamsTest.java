@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -80,18 +79,24 @@ public class SearchStreamsTest {
 	}
 	
 	@Test
-	public void p5_getMaxPriceOrder() {
+	public void p5_getCreationDateOfMaxTotalPriceOrder() {
 		LocalDate yesterday = now().minusDays(1);
 		Order order1 = new Order().setTotalPrice(BigDecimal.ONE).setCreationDate(now());
 		Order order2 = new Order().setTotalPrice(BigDecimal.TEN).setCreationDate(yesterday);
-		assertEquals(order2, service.p5_getMaxPriceOrder(new Customer(order1, order2)));
-		// assertEquals(yesterday, service.p5_getMaxPriceOrder(new Customer(order1, order2)).get());
+
+		LocalDate creationDateOfMaximumTotalPriceOrder =
+			service.p5_getMaxPriceOrderDate(new Customer(order1, order2))
+				   .orElse(null);
+
+		assertEquals(yesterday, creationDateOfMaximumTotalPriceOrder);
 	}
 	
 	@Test
-	public void p5_getMaxPriceOrder_whenNoOrders_returnsNothing() {
-		assertNull(service.p5_getMaxPriceOrder(new Customer()));
-		// assertFalse(service.p5_getMaxPriceOrder(new Customer()).isPresent());
+	public void p5_getCreationDateOfMaxTotalPriceOrder_whenNoOrders_returnsNothing() {
+		Optional<LocalDate> creationDateOfMaximumTotalPriceOrder =
+				service.p5_getMaxPriceOrderDate(new Customer());
+
+		assertEquals(empty(), creationDateOfMaximumTotalPriceOrder);
 	}
 	
 	@Test
