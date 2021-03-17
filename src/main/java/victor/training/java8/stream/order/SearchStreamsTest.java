@@ -1,15 +1,14 @@
 package victor.training.java8.stream.order;
 
 import static java.time.LocalDate.now;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static java.util.Optional.empty;
+import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
@@ -38,14 +37,21 @@ public class SearchStreamsTest {
 	@Test
 	public void p2_getOrderById() {
 		List<Order> orders = Arrays.asList(new Order(1L), new Order(2L), new Order(3L));
-		assertEquals(2L, (long) service.p2_getOrderById(orders, 2L).getId());
+
+		Long orderId =
+			service.p2_getOrderById(orders, 2L)
+				.map(Order::getId).orElse(0L);
+
+		assertEquals(2L, (long) orderId);
 	}
 	
 	@Test
-//	@Ignore
 	public void p2_getOrderById_whenIdNotFound() {
 		List<Order> orders = Arrays.asList(new Order(1L));
-		assertEquals(null, service.p2_getOrderById(orders, 1000L));
+
+		Optional<Order> orderById = service.p2_getOrderById(orders, 1000L);
+
+		assertEquals(empty(), orderById);
 	}
 
 	@Test

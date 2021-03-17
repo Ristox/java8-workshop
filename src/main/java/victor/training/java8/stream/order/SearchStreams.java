@@ -3,6 +3,7 @@ package victor.training.java8.stream.order;
 import static java.util.stream.Collectors.toList;
 
 import java.util.List;
+import java.util.Optional;
 
 import victor.training.java8.stream.order.entity.Customer;
 import victor.training.java8.stream.order.entity.Order;
@@ -30,10 +31,10 @@ public class SearchStreams {
 	 * - ...Any or ...First ?
 	 * - what do you do when you don't find it ? null/throw/Optional ?
 	 */
-	public Order p2_getOrderById(List<Order> orders, long orderId) {
+	public Optional<Order> p2_getOrderById(List<Order> orders, long orderId) {
 		return orders.stream()
 				.filter(order -> order.getId().equals(orderId))
-				.findFirst().orElse(null);
+				.findFirst();
 	}
 	
 	/**
