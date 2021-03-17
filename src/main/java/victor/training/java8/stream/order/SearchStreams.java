@@ -2,7 +2,6 @@ package victor.training.java8.stream.order;
 
 import static java.util.stream.Collectors.toList;
 
-import java.util.Comparator;
 import java.util.List;
 
 import victor.training.java8.stream.order.entity.Customer;
@@ -21,7 +20,9 @@ public class SearchStreams {
 	 * - shorten/clean it up
 	 */
 	public List<Order> p1_getActiveOrders(Customer customer) {
-		return customer.getOrders().stream().collect(toList());
+		return customer.getOrders().stream()
+				.filter(Order::isActive)
+				.collect(toList());
 	}
 
 	/**

@@ -1,6 +1,7 @@
 package victor.training.java8.stream.order.entity;
 
 import static java.util.stream.Collectors.joining;
+import static victor.training.java8.stream.order.entity.Order.Status.ACTIVE;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -10,6 +11,10 @@ import java.util.List;
 
 
 public class Order {
+
+	public boolean isActive() {
+		return ACTIVE.equals(getStatus());
+	}
 
 	public enum Status {
 		DRAFT, ACTIVE, INACTIVE
