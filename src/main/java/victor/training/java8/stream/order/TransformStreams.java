@@ -10,6 +10,8 @@ import victor.training.java8.stream.order.entity.Product;
 import java.time.LocalDate;
 import java.util.*;
 
+import static java.util.stream.Collectors.toList;
+
 public class TransformStreams {
 
 	/**
@@ -17,16 +19,7 @@ public class TransformStreams {
 	 * Discussion:.. Make it cleanest!
 	 */
 	public List<OrderDto> p01_toDtos(List<Order> orders) {
-		
-		List<OrderDto> dtos = new ArrayList<>();
-		for (Order order : orders) {
-			OrderDto dto = new OrderDto();
-			dto.totalPrice = order.getTotalPrice(); 
-			dto.creationDate = order.getCreationDate();
-			dtos.add(dto);
-		}
-		return dtos;
-		
+		return orders.stream().map(OrderDto::new).collect(toList());
 	}
 	
 	/**
