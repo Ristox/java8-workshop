@@ -1,12 +1,14 @@
 package victor.training.java8.stream.order;
 
 import static java.time.LocalDate.now;
+import static java.util.Collections.emptyList;
 import static java.util.Optional.empty;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -122,7 +124,7 @@ public class SearchStreamsTest {
 	@Test
 	public void p6_getLast3Orders_whenNoOrders() {
 		Customer customer = new Customer();
-		assertEquals(Arrays.asList(), service.p6_getLast3Orders(customer));
+		assertEquals(emptyList(), service.p6_getLast3Orders(customer));
 	}
 	
 
