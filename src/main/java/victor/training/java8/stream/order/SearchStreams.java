@@ -1,15 +1,15 @@
 package victor.training.java8.stream.order;
 
-import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.toList;
+import victor.training.java8.stream.order.entity.Customer;
+import victor.training.java8.stream.order.entity.Order;
+import victor.training.java8.stream.order.entity.OrderLine;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import victor.training.java8.stream.order.entity.Customer;
-import victor.training.java8.stream.order.entity.Order;
-import victor.training.java8.stream.order.entity.OrderLine;
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toList;
 
 public class SearchStreams {
 
@@ -72,8 +72,12 @@ public class SearchStreams {
 	/**
 	 * last 3 Orders sorted descending by creationDate
 	 */
-	public List<Order> p6_getLast3Orders(Customer customer) {
-		return null; 
+	public List<Order> p6_getLast3Orders(Customer customer)
+	{
+		return customer.getOrders().stream()
+				.sorted(comparing(Order::getCreationDate).reversed())
+				.limit(3)
+				.collect(toList());
 	}
 	
 	
