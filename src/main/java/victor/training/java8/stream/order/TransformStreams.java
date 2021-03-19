@@ -9,6 +9,7 @@ import victor.training.java8.stream.order.entity.Product;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Stream;
 
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.*;
@@ -69,16 +70,16 @@ public class TransformStreams {
 	 * i.e. SELECT PROD_ID, SUM(COUNT) FROM PROD GROUPING BY PROD_ID
 	 */
 	public Map<Product, Long> p06_getProductCount(Customer customer) {
-		
-		List<OrderLine> allLines = new ArrayList<>();
-		
-		for (Order order : customer.getOrders()) {
-			allLines.addAll(order.getOrderLines());
-		}
-		return null; 
-		
+		return streamLinesOf(customer.getOrders())
+				.collect(
+					groupingBy(OrderLine::getProduct, summingLong(OrderLine::getCount))
+				);
 	}
-	
+
+	private Stream<OrderLine> streamLinesOf(List<Order> orders) {
+		return orders.stream().flatMap(order -> order.getOrderLines().stream());
+	}
+
 	/**
 	 * All the unique products bought by the customer, 
 	 * sorted by Product.name.
