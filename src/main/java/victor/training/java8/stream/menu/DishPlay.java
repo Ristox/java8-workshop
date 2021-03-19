@@ -6,12 +6,13 @@ import static java.text.MessageFormat.format;
 import static java.util.Arrays.asList;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
+import static victor.training.java8.stream.menu.Dish.Type.MEAT;
 
 public class DishPlay {
    public static final List<Dish> menu = asList(
-       new Dish("pork", false, 800, Dish.Type.MEAT),
-       new Dish("beef", false, 700, Dish.Type.MEAT),
-       new Dish("chicken", false, 400, Dish.Type.MEAT),
+       new Dish("pork", false, 800, MEAT),
+       new Dish("beef", false, 700, MEAT),
+       new Dish("chicken", false, 400, MEAT),
        new Dish("french fries", true, 530, Dish.Type.OTHER),
        new Dish("rice", true, 350, Dish.Type.OTHER),
        new Dish("season fruit", true, 120, Dish.Type.OTHER),
@@ -73,5 +74,16 @@ public class DishPlay {
       return menu.stream()
               .filter(Dish::isVegetarian)
               .collect(toList());
+   }
+
+   public List<Dish> listFirstTwoDishesContainingMeat() {
+      return menu.stream()
+              .filter(this::containsMeat)
+              .limit(2)
+              .collect(toList());
+   }
+
+   private boolean containsMeat(Dish dish) {
+      return MEAT.equals(dish.getType());
    }
 }
