@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import static java.text.MessageFormat.format;
+import static victor.training.java8.stream.menu.Dish.Type.MEAT;
 
 @RequiredArgsConstructor
 public class Dish {
@@ -11,12 +12,17 @@ public class Dish {
     public enum Type { MEAT, FISH, OTHER;}
 
     @Getter private final String name;
+
     @Getter private final boolean vegetarian;
     @Getter private final int calories;
     @Getter private final Type type;
 
     boolean hasLowCalories() {
         return getCalories() < 400;
+    }
+
+    boolean containsMeat() {
+        return MEAT.equals(getType());
     }
 
     @Override

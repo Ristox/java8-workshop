@@ -78,12 +78,9 @@ public class DishPlay {
 
    public List<Dish> listFirstTwoDishesContainingMeat() {
       return menu.stream()
-              .filter(this::containsMeat)
+              .filter(Dish::containsMeat)
               .limit(2)
               .collect(toList());
    }
 
-   private boolean containsMeat(Dish dish) {
-      return MEAT.equals(dish.getType());
-   }
 }
