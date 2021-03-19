@@ -2,6 +2,7 @@ package victor.training.java8.stream.menu;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static java.text.MessageFormat.format;
 import static java.util.Arrays.asList;
@@ -99,5 +100,12 @@ public class DishPlay {
       return menu.stream()
               .map(Dish::getType)
               .collect(groupingBy(identity(), counting()));
+   }
+
+   public Map<Dish.Type, Set<Dish>> groupDishesToSetsOfDifferentType() {
+      return menu.stream()
+              .collect(
+                   groupingBy(Dish::getType, toSet())
+              );
    }
 }
