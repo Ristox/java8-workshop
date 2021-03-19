@@ -29,7 +29,7 @@ public class DishPlay {
 
       log("2nd and 3rd highest calorie dishes: {0}", dishPlay.listSecondAndThirdHighestCalorieDishes());
 
-      // TODO find vegetarian dishes
+      log("Vegetarian dishes: {0}", dishPlay.listVegetarianDishes());
 
       // TODO find 2 dishes with meat
 
