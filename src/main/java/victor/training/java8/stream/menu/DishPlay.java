@@ -47,7 +47,7 @@ public class DishPlay {
 
       log("Total calories by each Dish Type: {0}", dishPlay.countTotalCaloriesByType());
 
-      // TODO Map<Dish.Type, Optional<Dish>> mostCaloricByType
+      log("Most (highest) calorie dish of each different Dish Type: {0}", dishPlay.listMostCaloricDishByEachType());
    }
 
    private static void log(String s, Object... params) {
