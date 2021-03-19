@@ -2,6 +2,7 @@ package victor.training.java8.stream.menu;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import static java.text.MessageFormat.format;
@@ -113,6 +114,13 @@ public class DishPlay {
       return menu.stream()
               .collect(
                    groupingBy(Dish::getType, summingLong(Dish::getCalories))
+              );
+   }
+
+   public Map<Dish.Type, Optional<Dish>> listMostCaloricDishByEachType() {
+      return menu.stream()
+              .collect(
+                   groupingBy(Dish::getType, maxBy(comparing(Dish::getCalories)))
               );
    }
 }

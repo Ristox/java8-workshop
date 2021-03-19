@@ -156,7 +156,7 @@ public class DishPlayTest {
         Map<Dish.Type, Optional<Dish>> expectedMapOfDishTypeToHighestCalorieDishOfThatType = mapOf(
             MEAT, of(DishPlay.menu.get(0)), // pork, 800 calories
             FISH, of(DishPlay.menu.get(8)), // salmon, 450 calories
-            OTHER, of(DishPlay.menu.get(6)), // pizza, 550 calories
+            OTHER, of(DishPlay.menu.get(6)) // pizza, 550 calories
         );
 
         Map<Dish.Type, Optional<Dish>> result = dishPlay.listMostCaloricDishByEachType();
