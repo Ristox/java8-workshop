@@ -98,23 +98,16 @@ public class DishPlay {
    }
 
    public Map<Dish.Type, Long> countTypesOfDishes() {
-      return menu.stream()
-              .map(Dish::getType)
-              .collect(groupingBy(identity(), counting()));
+      return menu.stream().collect(groupingBy(Dish::getType, counting()));
    }
 
    public Map<Dish.Type, Set<Dish>> groupDishesToSetsOfDifferentType() {
-      return menu.stream()
-              .collect(
-                   groupingBy(Dish::getType, toSet())
-              );
+      return menu.stream().collect(groupingBy(Dish::getType, toSet()));
    }
 
    public Map<Dish.Type, Long> countTotalCaloriesByType() {
       return menu.stream()
-              .collect(
-                   groupingBy(Dish::getType, summingLong(Dish::getCalories))
-              );
+              .collect(groupingBy(Dish::getType, summingLong(Dish::getCalories)));
    }
 
    public Map<Dish.Type, Optional<Dish>> listMostCaloricDishByEachType() {
