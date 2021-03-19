@@ -24,9 +24,9 @@ public class DishPlay {
 
       System.out.println("Low calorie dishes: " + dishPlay.listOnlyLowCalorieDishes());
 
-      System.out.println("Names of 3 highest calorie menu items: " + dishPlay.listThreeHighCalorieDishNames());
+      System.out.println("Names of 3 highest calorie dishes: " + dishPlay.listThreeHighCalorieDishNames());
 
-      // TODO find out the 2nd and 3rd most caloric items
+      System.out.println("2nd and 3rd highest calorie dishes: " + dishPlay.listSecondAndThirdHighestCalorieDishes());
 
       // TODO find vegetarian dishes
 
@@ -53,5 +53,14 @@ public class DishPlay {
               .map(Dish::getName)
               .limit(3)
               .collect(toList());
+   }
+
+   public List<Dish> listSecondAndThirdHighestCalorieDishes() {
+      return menu.stream()
+              .sorted(comparing(Dish::getCalories).reversed())
+              .skip(1)
+              .limit(2)
+              .collect(toList());
+
    }
 }
