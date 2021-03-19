@@ -101,6 +101,19 @@ public class DishPlayTest {
         assertEquals(expectedDishesGrouping, result);
     }
 
+    @Test
+    public void countTypesOfDishes_listsExpectedTypesAndCounts() {
+        Map<Dish.Type, Long> expectedTypeCounts = mapOf(
+            MEAT, 3L,
+            FISH, 2L,
+            OTHER, 4L
+        );
+
+        Map<Dish.Type, Long> result = dishPlay.countTypesOfDishes();
+
+        assertEquals(expectedTypeCounts, result);
+    }
+
     private <K, V> Map<K, V> mapOf(
         K key1, V value1,
         K key2, V value2
