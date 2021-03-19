@@ -6,8 +6,8 @@ import java.util.Map;
 import static java.text.MessageFormat.format;
 import static java.util.Arrays.asList;
 import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.toList;
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.*;
 import static victor.training.java8.stream.menu.Dish.Type.MEAT;
 
 public class DishPlay {
@@ -95,4 +95,9 @@ public class DishPlay {
               );
    }
 
+   public Map<Dish.Type, Long> countTypesOfDishes() {
+      return menu.stream()
+              .map(Dish::getType)
+              .collect(groupingBy(identity(), counting()));
+   }
 }
