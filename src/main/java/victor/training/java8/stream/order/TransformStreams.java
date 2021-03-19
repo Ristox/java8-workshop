@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Stream;
 
+import static java.util.Comparator.comparing;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.*;
 
@@ -85,7 +86,11 @@ public class TransformStreams {
 	 * sorted by Product.name.
 	 */
 	public List<Product> p07_getAllOrderedProducts(Customer customer) {
-		return null; 
+		return streamLinesOf(customer.getOrders())
+				.map(OrderLine::getProduct)
+				.distinct()
+				.sorted(comparing(Product::getName))
+				.collect(toList());
 	}
 	
 	
