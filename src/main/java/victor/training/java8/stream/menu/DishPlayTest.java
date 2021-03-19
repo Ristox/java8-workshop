@@ -137,6 +137,19 @@ public class DishPlayTest {
         assertEquals(expectedDishesAsSetsByType, result);
     }
 
+    @Test
+    public void countTotalCaloriesByType_givesMapOfTotalCaloriesOfDishesGroupedByType() {
+        Map<Dish.Type, Long> expectedTotalCaloriesOfDishesByType = mapOf(
+            MEAT, 1900L,
+            FISH, 750L,
+            OTHER, 1550L
+        );
+
+        Map<Dish.Type, Long> result = dishPlay.countTotalCaloriesByType();
+
+        assertEquals(expectedTotalCaloriesOfDishesByType, result);
+    }
+
     private Set<Dish> setOf(Dish... dishes) {
         return new HashSet<>(listOf(dishes));
     }
