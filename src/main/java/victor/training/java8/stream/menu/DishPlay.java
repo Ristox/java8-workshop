@@ -3,6 +3,7 @@ package victor.training.java8.stream.menu;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.toList;
 
 public class DishPlay {
    public static final List<Dish> menu = asList(
@@ -39,5 +40,13 @@ public class DishPlay {
       // TODO Map<Dish.Type, Integer> totalCaloriesByType
 
       // TODO Map<Dish.Type, Optional<Dish>> mostCaloricByType
+   }
+
+   public List<Dish> listOnlyLowCalorieMenuItems() {
+      return menu.stream().filter(this::hasLowCalories).collect(toList());
+   }
+
+   private boolean hasLowCalories(Dish dish) {
+      return dish.getCalories() < 400;
    }
 }
