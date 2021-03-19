@@ -86,12 +86,13 @@ public class DishPlayTest {
             ),
             FISH, mapOf(
                 300, list(DishPlay.menu.get(7)), //300 - [prawns]
-                400, list(DishPlay.menu.get(8)) //400 - [salmon]
+                450, list(DishPlay.menu.get(8)) //450 - [salmon]
             ),
             OTHER, mapOf(
                 530, list(DishPlay.menu.get(3)), //530 - [french fries]
                 350, list(DishPlay.menu.get(4)), //350 - [rice]
-                350, list(DishPlay.menu.get(5)) //120 - [season fruit]
+                120, list(DishPlay.menu.get(5)), //120 - [season fruit]
+                550, list(DishPlay.menu.get(6)) //550 - [pizza]
             )
         );
 
@@ -149,7 +150,7 @@ public class DishPlayTest {
                 key1, value1,
                 key2, value2,
                 key3, value3,
-                key4, value4,
+                key4, value4
         );
         map.put(key5, value5);
         return map;

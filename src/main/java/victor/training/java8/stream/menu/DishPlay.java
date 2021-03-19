@@ -1,10 +1,12 @@
 package victor.training.java8.stream.menu;
 
 import java.util.List;
+import java.util.Map;
 
 import static java.text.MessageFormat.format;
 import static java.util.Arrays.asList;
 import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 import static victor.training.java8.stream.menu.Dish.Type.MEAT;
 
@@ -81,6 +83,15 @@ public class DishPlay {
               .filter(Dish::containsMeat)
               .limit(2)
               .collect(toList());
+   }
+
+   public Map<Dish.Type, Map<Object, List<Dish>>> groupDishesByTypeAndCaloricLevel() {
+      return menu.stream()
+              .collect(
+                  groupingBy(Dish::getType,
+                       groupingBy(Dish::getCalories)
+                  )
+              );
    }
 
 }
