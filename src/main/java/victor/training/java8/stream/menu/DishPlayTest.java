@@ -35,4 +35,16 @@ public class DishPlayTest {
         assertEquals(expectedNamesOfMenuItemsWithHighestCalories, result);
     }
 
+    @Test
+    public void listSecondAndThirdHighestCalorieDishes_listsExpectedItemNamesWithHighestCalories() {
+        List<Dish> expectedSecondAndThirdHighestCalorieMenuItems = asList(
+          DishPlay.menu.get(1), // beef, 700 calories
+          DishPlay.menu.get(6) // pizza, 550 calories
+        );
+
+        List<Dish> result = dishPlay.listSecondAndThirdHighestCalorieDishes();
+
+        assertEquals(expectedSecondAndThirdHighestCalorieMenuItems, result);
+    }
+
 }
