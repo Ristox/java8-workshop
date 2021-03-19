@@ -19,9 +19,10 @@ public class DishPlay {
 
    public static void main(String[] args) {
       // The above code sample + problems are from Java 8 in Action book (Manning)
+      DishPlay dishPlay = new DishPlay();
 
       // TODO select the low-calories (<400) items
-
+      System.out.println("Low calorie menu items: " + dishPlay.listOnlyLowCalorieMenuItems());
 
       // TODO find out three high-calorie dish names
 
