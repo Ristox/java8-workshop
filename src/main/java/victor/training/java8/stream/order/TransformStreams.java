@@ -112,7 +112,9 @@ public class TransformStreams {
 	 * Sum of all Order.getTotalPrice(), truncated to Long.
 	 */
 	public Long p09_getApproximateTotalOrdersPrice(Customer customer) {
-		// TODO +, longValue(), reduce()
-		return null;
+		return customer.getOrders().stream()
+				.map(Order::getTotalPrice)
+				.mapToLong(BigDecimal::longValue)
+				.sum();
 	}
 }
