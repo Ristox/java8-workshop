@@ -49,7 +49,7 @@ public class DishPlay {
 
    public List<String> listThreeHighCalorieDishNames() {
       return menu.stream()
-              .sorted(comparing(Dish::getCalories))
+              .sorted(comparing(Dish::getCalories).reversed())
               .map(Dish::getName)
               .limit(3)
               .collect(toList());
