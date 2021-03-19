@@ -108,4 +108,11 @@ public class DishPlay {
                    groupingBy(Dish::getType, toSet())
               );
    }
+
+   public Map<Dish.Type, Long> countTotalCaloriesByType() {
+      return menu.stream()
+              .collect(
+                   groupingBy(Dish::getType, summingLong(Dish::getCalories))
+              );
+   }
 }
