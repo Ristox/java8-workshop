@@ -43,10 +43,7 @@ public class DishPlay {
    }
 
    public List<Dish> listOnlyLowCalorieMenuItems() {
-      return menu.stream().filter(this::hasLowCalories).collect(toList());
+      return menu.stream().filter(Dish::hasLowCalories).collect(toList());
    }
 
-   private boolean hasLowCalories(Dish dish) {
-      return dish.getCalories() < 400;
-   }
 }
