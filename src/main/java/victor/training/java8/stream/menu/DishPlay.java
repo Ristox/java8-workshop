@@ -3,6 +3,7 @@ package victor.training.java8.stream.menu;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 
 public class DishPlay {
@@ -21,10 +22,9 @@ public class DishPlay {
       // The above code sample + problems are from Java 8 in Action book (Manning)
       DishPlay dishPlay = new DishPlay();
 
-      // TODO select the low-calories (<400) items
       System.out.println("Low calorie menu items: " + dishPlay.listOnlyLowCalorieMenuItems());
 
-      // TODO find out three high-calorie dish names
+      System.out.println("Names of 3 highest calorie menu items: " + dishPlay.listThreeHighCalorieDishNames());
 
       // TODO find out the 2nd and 3rd most caloric items
 
@@ -47,4 +47,11 @@ public class DishPlay {
       return menu.stream().filter(Dish::hasLowCalories).collect(toList());
    }
 
+   public List<String> listThreeHighCalorieDishNames() {
+      return menu.stream()
+              .sorted(comparing(Dish::getCalories))
+              .map(Dish::getName)
+              .limit(3)
+              .collect(toList());
+   }
 }
