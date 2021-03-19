@@ -1,39 +1,19 @@
 package victor.training.java8.stream.menu;
 
-import java.util.Arrays;
-import java.util.List;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
+import static java.text.MessageFormat.format;
+
+@RequiredArgsConstructor
 public class Dish {
-    private final String name;
-    private final boolean vegetarian;
-    private final int calories;
-    private final Type type;
-
-
 
     public enum Type { MEAT, FISH, OTHER;}
-    public Dish(String name, boolean vegetarian, int calories, Type type) {
-        this.name = name;
-        this.vegetarian = vegetarian;
-        this.calories = calories;
-        this.type = type;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public boolean isVegetarian() {
-        return vegetarian;
-    }
-
-    public int getCalories() {
-        return calories;
-    }
-
-    public Type getType() {
-        return type;
-    }
+    @Getter private final String name;
+    @Getter private final boolean vegetarian;
+    @Getter private final int calories;
+    @Getter private final Type type;
 
     boolean hasLowCalories() {
         return getCalories() < 400;
@@ -41,7 +21,8 @@ public class Dish {
 
     @Override
     public String toString() {
-        return name;
+        return format("{0}=({1}, {2} calories)",
+                       getClass().getSimpleName(), getName(), getCalories());
     }
 
 }
