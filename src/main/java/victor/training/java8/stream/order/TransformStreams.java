@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
 
 public class TransformStreams {
 
@@ -26,7 +27,9 @@ public class TransformStreams {
 	 * Note: Order.getPaymentMethod()
 	 */
 	public Set<PaymentMethod> p02_getUsedPaymentMethods(Customer customer) {
-		return null; 
+		return customer.getOrders().stream()
+			.map(Order::getPaymentMethod)
+			.collect(toSet());
 	}
 	
 	/**
