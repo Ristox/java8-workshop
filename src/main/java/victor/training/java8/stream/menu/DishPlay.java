@@ -36,7 +36,8 @@ public class DishPlay {
 
       log("First 2 dishes containing meat: {0}", dishPlay.listFirstTwoDishesContainingMeat());
 
-      // TODO Map<Type, Map<Object, List<Dish>>> dishesByTypeAndCaloricLevel
+      log("Dishes grouped first by type, then by their caloric level (2-level hierarchy): {0}",
+           dishPlay.groupDishesByTypeAndCaloricLevel());
 
       // TODO Map<Dish.Type, Long> typesCount
 
