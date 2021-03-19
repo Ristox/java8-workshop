@@ -2,6 +2,7 @@ package victor.training.java8.stream.menu;
 
 import java.util.List;
 
+import static java.text.MessageFormat.format;
 import static java.util.Arrays.asList;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
@@ -22,11 +23,11 @@ public class DishPlay {
       // The above code sample + problems are from Java 8 in Action book (Manning)
       DishPlay dishPlay = new DishPlay();
 
-      System.out.println("Low calorie dishes: " + dishPlay.listOnlyLowCalorieDishes());
+      log("Low calorie dishes: {0}", dishPlay.listOnlyLowCalorieDishes());
 
-      System.out.println("Names of 3 highest calorie dishes: " + dishPlay.listThreeHighCalorieDishNames());
+      log("Names of 3 highest calorie dishes: {0}", dishPlay.listThreeHighCalorieDishNames());
 
-      System.out.println("2nd and 3rd highest calorie dishes: " + dishPlay.listSecondAndThirdHighestCalorieDishes());
+      log("2nd and 3rd highest calorie dishes: {0}", dishPlay.listSecondAndThirdHighestCalorieDishes());
 
       // TODO find vegetarian dishes
 
@@ -41,6 +42,10 @@ public class DishPlay {
       // TODO Map<Dish.Type, Integer> totalCaloriesByType
 
       // TODO Map<Dish.Type, Optional<Dish>> mostCaloricByType
+   }
+
+   private static void log(String s, Object... params) {
+      System.out.println(format(s, params));
    }
 
    public List<Dish> listOnlyLowCalorieDishes() {
