@@ -47,4 +47,18 @@ public class DishPlayTest {
         assertEquals(expectedSecondAndThirdHighestCalorieMenuItems, result);
     }
 
+    @Test
+    public void listVegetarianDishes_listsExpectedDishesWhichAreVegetarian() {
+        List<Dish> expectedVegetarianDishes = asList(
+            DishPlay.menu.get(3), // french fries
+            DishPlay.menu.get(4), // rice
+            DishPlay.menu.get(5), // season fruit
+            DishPlay.menu.get(6) // vegetarian pizza
+        );
+
+        List<Dish> result = dishPlay.listVegetarianDishes();
+
+        assertEquals(expectedVegetarianDishes, result);
+    }
+
 }
