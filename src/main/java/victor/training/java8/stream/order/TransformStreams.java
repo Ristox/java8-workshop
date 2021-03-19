@@ -10,8 +10,7 @@ import victor.training.java8.stream.order.entity.Product;
 import java.time.LocalDate;
 import java.util.*;
 
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
+import static java.util.stream.Collectors.*;
 
 public class TransformStreams {
 
@@ -37,7 +36,9 @@ public class TransformStreams {
 	 * Note: Order.getCreationDate()
 	 */
 	public SortedSet<LocalDate> p03_getOrderDatesAscending(Customer customer) {
-		return null; 
+		return customer.getOrders().stream()
+				.map(Order::getCreationDate)
+				.collect(toCollection(TreeSet::new));
 	}
 	
 	
