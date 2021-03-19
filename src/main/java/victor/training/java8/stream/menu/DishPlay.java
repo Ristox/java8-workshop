@@ -68,4 +68,10 @@ public class DishPlay {
               .collect(toList());
 
    }
+
+   public List<Dish> listVegetarianDishes() {
+      return menu.stream()
+              .filter(Dish::isVegetarian)
+              .collect(toList());
+   }
 }
