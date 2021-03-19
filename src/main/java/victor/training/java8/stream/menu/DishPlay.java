@@ -42,7 +42,7 @@ public class DishPlay {
 
       log("Counts of different types of dishes: {0}", dishPlay.countTypesOfDishes());
 
-      // TODO Map<Dish.Type, Set<Dish>> groupedAsSets
+      log("Dishes grouped to Sets under different Dish Types: {0}", dishPlay.groupDishesToSetsOfDifferentType());
 
       // TODO Map<Dish.Type, Integer> totalCaloriesByType
 
