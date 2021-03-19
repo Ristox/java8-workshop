@@ -24,4 +24,15 @@ public class DishPlayTest {
         assertEquals(expectedMenuItemsWithLowCalories, result);
     }
 
+    @Test
+    public void listThreeHighCalorieDishNames_listsExpectedItemNamesWithHighestCalories() {
+        List<String> expectedNamesOfMenuItemsWithHighestCalories = asList(
+          "pork", "beef", "pizza"
+        );
+
+        List<String> result = dishPlay.listThreeHighCalorieDishNames();
+
+        assertEquals(expectedNamesOfMenuItemsWithHighestCalories, result);
+    }
+
 }
