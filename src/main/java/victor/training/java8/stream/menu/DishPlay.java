@@ -32,7 +32,7 @@ public class DishPlay {
 
       log("Vegetarian dishes: {0}", dishPlay.listVegetarianDishes());
 
-      // TODO find 2 dishes with meat
+      log("First 2 dishes containing meat: {0}", dishPlay.listFirstTwoDishesContainingMeat());
 
       // TODO Map<Type, Map<Object, List<Dish>>> dishesByTypeAndCaloricLevel
 
