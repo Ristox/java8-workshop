@@ -10,6 +10,7 @@ import victor.training.java8.stream.order.entity.Product;
 import java.time.LocalDate;
 import java.util.*;
 
+import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.*;
 
 public class TransformStreams {
@@ -46,7 +47,8 @@ public class TransformStreams {
 	 * @return a map order.id -> order
 	 */
 	public Map<Long, Order> p04_mapOrdersById(Customer customer) {
-		return null; 
+		return customer.getOrders().stream()
+				.collect(toMap(Order::getId, identity()));
 	}
 	
 	/** 
