@@ -1,10 +1,11 @@
 package victor.training.java8.stream.menu;
 
-import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Arrays.asList;
+
 public class DishPlay {
-   public static final List<Dish> menu = Arrays.asList(
+   public static final List<Dish> menu = asList(
        new Dish("pork", false, 800, Dish.Type.MEAT),
        new Dish("beef", false, 700, Dish.Type.MEAT),
        new Dish("chicken", false, 400, Dish.Type.MEAT),
@@ -19,6 +20,7 @@ public class DishPlay {
       // The above code sample + problems are from Java 8 in Action book (Manning)
 
       // TODO select the low-calories (<400) items
+
 
       // TODO find out three high-calorie dish names
 
