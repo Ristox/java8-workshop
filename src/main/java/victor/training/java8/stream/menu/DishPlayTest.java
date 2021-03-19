@@ -61,4 +61,16 @@ public class DishPlayTest {
         assertEquals(expectedVegetarianDishes, result);
     }
 
+    @Test
+    public void listFirstTwoDishesContainingMeat_listsExpectedDishesWithTypeMeat() {
+        List<Dish> expectedDishesContainingMeat = asList(
+            DishPlay.menu.get(0), // pork
+            DishPlay.menu.get(1)  // beef
+        );
+
+        List<Dish> result = dishPlay.listFirstTwoDishesContainingMeat();
+
+        assertEquals(expectedDishesContainingMeat, result);
+    }
+
 }
