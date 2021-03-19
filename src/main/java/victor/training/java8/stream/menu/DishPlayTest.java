@@ -2,9 +2,7 @@ package victor.training.java8.stream.menu;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
@@ -80,19 +78,19 @@ public class DishPlayTest {
     public void groupDishesByTypeAndCaloricLevel_listsExpectedGroupsOfDishes() {
         Map<Dish.Type, Map<Object, List<Dish>>> expectedDishesGrouping = mapOf(
             MEAT, mapOf(
-               800, list(DishPlay.menu.get(0)), //800 - [pork]
-               700, list(DishPlay.menu.get(1)), //700 - [beef]
-               400, list(DishPlay.menu.get(2)) //400 - [chicken]
+               800, listOf(DishPlay.menu.get(0)), //800 - [pork]
+               700, listOf(DishPlay.menu.get(1)), //700 - [beef]
+               400, listOf(DishPlay.menu.get(2)) //400 - [chicken]
             ),
             FISH, mapOf(
-                300, list(DishPlay.menu.get(7)), //300 - [prawns]
-                450, list(DishPlay.menu.get(8)) //450 - [salmon]
+                300, listOf(DishPlay.menu.get(7)), //300 - [prawns]
+                450, listOf(DishPlay.menu.get(8)) //450 - [salmon]
             ),
             OTHER, mapOf(
-                530, list(DishPlay.menu.get(3)), //530 - [french fries]
-                350, list(DishPlay.menu.get(4)), //350 - [rice]
-                120, list(DishPlay.menu.get(5)), //120 - [season fruit]
-                550, list(DishPlay.menu.get(6)) //550 - [pizza]
+                530, listOf(DishPlay.menu.get(3)), //530 - [french fries]
+                350, listOf(DishPlay.menu.get(4)), //350 - [rice]
+                120, listOf(DishPlay.menu.get(5)), //120 - [season fruit]
+                550, listOf(DishPlay.menu.get(6)) //550 - [pizza]
             )
         );
 
@@ -104,14 +102,43 @@ public class DishPlayTest {
     @Test
     public void countTypesOfDishes_listsExpectedTypesAndCounts() {
         Map<Dish.Type, Long> expectedTypeCounts = mapOf(
-            MEAT, 3L,
-            FISH, 2L,
-            OTHER, 4L
+                MEAT, 3L,
+                FISH, 2L,
+                OTHER, 4L
         );
 
         Map<Dish.Type, Long> result = dishPlay.countTypesOfDishes();
 
         assertEquals(expectedTypeCounts, result);
+    }
+
+    @Test
+    public void groupDishesToSetsOfDifferentType_listsExpectedDishesAsSetsByType() {
+        Map<Dish.Type, Set<Dish>> expectedDishesAsSetsByType = mapOf(
+            MEAT, setOf(
+                DishPlay.menu.get(0), // pork
+                DishPlay.menu.get(1), // beef
+                DishPlay.menu.get(2)  // chicken
+            ),
+            FISH, setOf(
+                DishPlay.menu.get(7), // prawns
+                DishPlay.menu.get(8)  // salmon
+            ),
+            OTHER, setOf(
+                DishPlay.menu.get(3), // french fries
+                DishPlay.menu.get(4), // rice
+                DishPlay.menu.get(5), // season fruit
+                DishPlay.menu.get(6)  // pizza
+            )
+        );
+
+        Map<Dish.Type, Set<Dish>> result = dishPlay.groupDishesToSetsOfDifferentType();
+
+        assertEquals(expectedDishesAsSetsByType, result);
+    }
+
+    private Set<Dish> setOf(Dish... dishes) {
+        return new HashSet<>(listOf(dishes));
     }
 
     private <K, V> Map<K, V> mapOf(
@@ -169,7 +196,7 @@ public class DishPlayTest {
         return map;
     }
 
-    private List<Dish> list(Dish... dishes) {
+    private List<Dish> listOf(Dish... dishes) {
         return asList(dishes);
     }
 
