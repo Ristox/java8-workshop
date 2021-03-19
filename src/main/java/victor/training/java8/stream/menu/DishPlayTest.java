@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.*;
 
 import static java.util.Arrays.asList;
+import static java.util.Optional.of;
 import static org.junit.Assert.assertEquals;
 import static victor.training.java8.stream.menu.Dish.Type.*;
 
@@ -148,6 +149,19 @@ public class DishPlayTest {
         Map<Dish.Type, Long> result = dishPlay.countTotalCaloriesByType();
 
         assertEquals(expectedTotalCaloriesOfDishesByType, result);
+    }
+
+    @Test
+    public void listMostCaloricDishByEachType_givesMapOfDishTypeToHighestCalorieDishOfThatType() {
+        Map<Dish.Type, Optional<Dish>> expectedMapOfDishTypeToHighestCalorieDishOfThatType = mapOf(
+            MEAT, of(DishPlay.menu.get(0)), // pork, 800 calories
+            FISH, of(DishPlay.menu.get(8)), // salmon, 450 calories
+            OTHER, of(DishPlay.menu.get(6)), // pizza, 550 calories
+        );
+
+        Map<Dish.Type, Optional<Dish>> result = dishPlay.listMostCaloricDishByEachType();
+
+        assertEquals(expectedMapOfDishTypeToHighestCalorieDishOfThatType, result);
     }
 
     private Set<Dish> setOf(Dish... dishes) {
