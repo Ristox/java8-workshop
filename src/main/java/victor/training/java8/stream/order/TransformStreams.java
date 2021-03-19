@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Stream;
 
+import static java.math.BigDecimal.ZERO;
 import static java.util.Comparator.comparing;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.*;
@@ -114,7 +115,7 @@ public class TransformStreams {
 	public Long p09_getApproximateTotalOrdersPrice(Customer customer) {
 		return customer.getOrders().stream()
 				.map(Order::getTotalPrice)
-				.mapToLong(BigDecimal::longValue)
-				.sum();
+				.reduce(ZERO, BigDecimal::add)
+				.longValue();
 	}
 }
