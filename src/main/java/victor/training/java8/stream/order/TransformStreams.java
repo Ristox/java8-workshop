@@ -7,6 +7,7 @@ import victor.training.java8.stream.order.entity.Order.PaymentMethod;
 import victor.training.java8.stream.order.entity.OrderLine;
 import victor.training.java8.stream.order.entity.Product;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Stream;
@@ -101,7 +102,10 @@ public class TransformStreams {
 	 * Hint: Reuse the previous function.
 	 */
 	public String p08_getProductsJoined(Customer customer) {
-		return null; 
+		return p07_getAllOrderedProducts(customer)
+				.stream()
+				.map(Product::getName)
+				.collect(joining(","));
 	}
 	
 	/**
