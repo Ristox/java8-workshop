@@ -12,14 +12,14 @@ public class DishPlayTest {
     private DishPlay dishPlay = new DishPlay();
 
     @Test
-    public void listOnlyLowCalorieMenuItems_listsExpectedItemsWithLessThan400Calories() {
+    public void listOnlyLowCalorieDishes_listsExpectedItemsWithLessThan400Calories() {
         List<Dish> expectedMenuItemsWithLowCalories = asList(
                 DishPlay.menu.get(4), //rice 350 cal
                 DishPlay.menu.get(5), //season fruit 120 cal
                 DishPlay.menu.get(7)  //prawns 300 cal
         );
 
-        List<Dish> result = dishPlay.listOnlyLowCalorieMenuItems();
+        List<Dish> result = dishPlay.listOnlyLowCalorieDishes();
 
         assertEquals(expectedMenuItemsWithLowCalories, result);
     }

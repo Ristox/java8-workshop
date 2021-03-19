@@ -22,7 +22,7 @@ public class DishPlay {
       // The above code sample + problems are from Java 8 in Action book (Manning)
       DishPlay dishPlay = new DishPlay();
 
-      System.out.println("Low calorie menu items: " + dishPlay.listOnlyLowCalorieMenuItems());
+      System.out.println("Low calorie dishes: " + dishPlay.listOnlyLowCalorieDishes());
 
       System.out.println("Names of 3 highest calorie menu items: " + dishPlay.listThreeHighCalorieDishNames());
 
@@ -43,7 +43,7 @@ public class DishPlay {
       // TODO Map<Dish.Type, Optional<Dish>> mostCaloricByType
    }
 
-   public List<Dish> listOnlyLowCalorieMenuItems() {
+   public List<Dish> listOnlyLowCalorieDishes() {
       return menu.stream().filter(Dish::hasLowCalories).collect(toList());
    }
 
