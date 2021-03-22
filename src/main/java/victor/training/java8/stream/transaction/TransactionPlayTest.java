@@ -1,20 +1,17 @@
 package victor.training.java8.stream.transaction;
 
-import static java.util.stream.Collectors.joining;
+import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
 
-import org.junit.Test;
-
-
-public class TransactionPlay {
+public class TransactionPlayTest {
 
 	private Trader raoul = new Trader("Raoul", "Cambridge");
 	private Trader mario = new Trader("Mario","Milan");
