@@ -7,10 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.IntStream.range;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -132,9 +134,18 @@ public class TransactionPlayTest {
 	public void uniqueCharactersOfManyWords() {
 		List<String> expected = Arrays.asList("a", "b", "c", "d", "f");
 		List<String> wordsStream = Arrays.asList("abcd", "acdf");
-		
-		List<String> actual = null; // TODO
+
+		List<String> actual = wordsStream.stream()
+				.flatMap(this::streamCharactersOfString)
+				.distinct()
+				.collect(toList());
+
 		assertEquals(expected, actual);
+	}
+
+	private Stream<String> streamCharactersOfString(String s) {
+		return range(0, s.length())
+				.mapToObj(atIndex -> s.substring(atIndex, atIndex + 1));
 	}
 	
 	
