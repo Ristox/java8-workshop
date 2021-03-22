@@ -15,4 +15,8 @@ public class ElectricEngine extends Engine {
         return new ElectricEngine(this);
     }
 
+    @Override
+    protected String ignite() {
+        return "Blue energy activated";
+    }
 }

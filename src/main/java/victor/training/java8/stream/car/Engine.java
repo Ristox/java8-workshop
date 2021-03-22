@@ -18,4 +18,12 @@ public class Engine {
     public String toString() {
         return getClass().getSimpleName() + ":" + hashCode();
     }
+
+    public final String start() {
+        return ignite();
+    }
+
+    protected String ignite() {
+        return "General Engine ignited";
+    }
 }

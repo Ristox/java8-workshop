@@ -21,4 +21,8 @@ public class Car {
         return getClass().getSimpleName() + " " + year + ":" + hashCode()
                 + " (" + engine + ")";
     }
+
+    public String start() {
+        return engine.start();
+    }
 }

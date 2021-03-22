@@ -14,4 +14,9 @@ public class TurboEngine extends Engine {
     public Engine copy() {
         return new TurboEngine(this);
     }
+
+    @Override
+    protected String ignite() {
+        return "Turbo ignition!";
+    }
 }
