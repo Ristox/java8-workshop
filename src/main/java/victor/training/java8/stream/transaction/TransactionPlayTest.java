@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
+import static java.util.stream.Stream.iterate;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -144,6 +145,20 @@ public class TransactionPlayTest {
 	private Stream<String> streamCharactersOfString(String s) {
 		return range(0, s.length())
 				.mapToObj(atIndex -> s.substring(atIndex, atIndex + 1));
+	}
+
+
+	@Test
+	public void alternative_fibonacci_first_16() {
+		List<Integer> expected = Arrays.asList(1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987);
+
+		int[] initialFibPair = {1, 1};
+		Stream<Integer> fibonacci =
+			iterate(initialFibPair, (pair) -> new int[]{ pair[1], pair[0] + pair[1] })
+				.map(pair -> pair[0]);
+
+		List<Integer> fib16 = fibonacci.limit(16).collect(toList());
+		assertEquals(expected, fib16);
 	}
 	
 	
