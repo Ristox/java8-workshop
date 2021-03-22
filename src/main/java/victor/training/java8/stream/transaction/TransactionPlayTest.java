@@ -168,11 +168,15 @@ public class TransactionPlayTest {
 		List<String> words = Arrays.asList("abcd", "acdf");
 
 		List<String> actual = words.stream()
-				.flatMap(word -> stream(word.split("")))
+				.flatMap(this::shorterStreamCharactersOfString)
 				.distinct()
 				.collect(toList());
 
 		assertEquals(expected, actual);
+	}
+
+	private Stream<String> shorterStreamCharactersOfString(String s) {
+		return stream(s.split(""));
 	}
 	
 	
