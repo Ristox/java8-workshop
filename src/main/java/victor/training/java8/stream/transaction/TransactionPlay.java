@@ -20,4 +20,12 @@ public class TransactionPlay {
                 .sorted(comparing(Transaction::getValue))
                 .collect(toList());
     }
+
+    public List<String> listUniqueCitiesOfTraders() {
+        return transactions.stream()
+                .map(Transaction::getTrader)
+                .map(Trader::getCity)
+                .distinct()
+                .collect(toList());
+    }
 }
