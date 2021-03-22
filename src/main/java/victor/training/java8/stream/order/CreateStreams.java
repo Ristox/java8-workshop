@@ -24,9 +24,9 @@ public class CreateStreams {
 
       Stream<String> lines = Files.lines(file.toPath());
       return lines
-         .map(line -> line.split(";")) // Stream<String[]>
+         .map(line -> line.split(";"))
          .filter(cell -> "LINE".equals(cell[0]))
-         .map(this::parseOrderLine) // Stream<OrderLine>
+         .map(this::parseOrderLine)
          .peek(this::validateOrderLine)
          .collect(toList());
 
