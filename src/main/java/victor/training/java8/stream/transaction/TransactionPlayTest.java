@@ -96,9 +96,9 @@ public class TransactionPlayTest {
 	}
 
 	@Test
-	public void min_transaction_value() {
+	public void find_transaction_with_smallest_value() {
 		Transaction expected = tx[0];
-		Transaction min = play.findMinTransactionValue(); // TODO
+		Transaction min = play.findTransactionWithSmallestValue();
 
 		assertEquals(expected, min);
 	}

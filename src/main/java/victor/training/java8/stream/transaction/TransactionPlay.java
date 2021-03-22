@@ -67,4 +67,10 @@ public class TransactionPlay {
                 .mapToInt(Transaction::getValue)
                 .max();
     }
+
+    public Transaction findTransactionWithSmallestValue() {
+        return transactions.stream()
+                .min(comparing(Transaction::getValue))
+                .orElse(null);
+    }
 }
