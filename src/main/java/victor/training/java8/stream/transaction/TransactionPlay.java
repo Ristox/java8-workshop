@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 public class TransactionPlay {
@@ -36,5 +37,14 @@ public class TransactionPlay {
                 .distinct()
                 .sorted(comparing(Trader::getName))
                 .collect(toList());
+    }
+
+    public String outputSortedNamesOfAllTraders() {
+        return transactions.stream()
+                .map(Transaction::getTrader)
+                .map(Trader::getName)
+                .distinct()
+                .sorted()
+                .collect(joining(","));
     }
 }

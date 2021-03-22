@@ -65,14 +65,14 @@ public class TransactionPlayTest {
 	}
 
 	@Test //4
-	public void names_of_all_traders_sorted_joined() {
+	public void outputs_sorted_names_of_all_traders() {
 		String expected = "Alan,Brian,Mario,Raoul";
 		
-		String joined = play.outputSortedNamesOfAllTraders(); // TODO
+		String joined = play.outputSortedNamesOfAllTraders();
 		
 		assertEquals(expected, joined);
 	}
-			
+
 	@Test //5
 	public void are_traders_in_Milano() {
 		boolean areTradersInMilan = false; // TODO
