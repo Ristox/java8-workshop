@@ -53,4 +53,11 @@ public class TransactionPlay {
                 .map(Transaction::getTrader)
                 .anyMatch(trader -> "Milan".equalsIgnoreCase(trader.getCity()));
     }
+
+    public int sumValuesOfCambridgeTradersTransactions() {
+        return transactions.stream()
+                .filter(tx -> "Cambridge".equalsIgnoreCase(tx.getTrader().getCity()))
+                .mapToInt(Transaction::getValue)
+                .sum();
+    }
 }
