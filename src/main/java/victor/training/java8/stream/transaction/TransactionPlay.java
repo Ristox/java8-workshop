@@ -16,7 +16,7 @@ public class TransactionPlay {
 
     public List<Transaction> sortAll2011TransactionsByValue() {
         return transactions.stream()
-                .filter((tx) -> tx.getYear() == 2011)
+                .filter(tx -> tx.getYear() == 2011)
                 .sorted(comparing(Transaction::getValue))
                 .collect(toList());
     }

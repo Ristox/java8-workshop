@@ -41,11 +41,11 @@ public class TransactionPlayTest {
 	public void all_2011_transactions_sorted_by_value() {
 		List<Transaction> expected = Arrays.asList(tx[0], tx[2]);
 		
-		List<Transaction> list = play.sortAll2011TransactionsByValue(); // TODO
+		List<Transaction> list = play.sortAll2011TransactionsByValue();
 		
 		assertEquals(expected, list);
 	}
-		
+
 	@Test //2
 	public void unique_cities_of_the_traders() {
 		List<String> expected = Arrays.asList("Cambridge", "Milan");
