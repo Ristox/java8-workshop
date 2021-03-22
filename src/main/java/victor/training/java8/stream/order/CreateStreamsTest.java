@@ -13,8 +13,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
+import static java.util.stream.Collectors.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -56,6 +55,9 @@ public class CreateStreamsTest {
    public void p4_getAllPaths() {
       Stream<String> pathsStream = service.p4_getAllPaths(new File("src/main/java"));
       Set<String> set = pathsStream.collect(toSet());
+
+      System.out.println(set.stream().sorted().collect(joining("\n")));
+
       assertTrue(set.stream().anyMatch(p -> p.contains("/CreateStreamsTest.java")));
    }
 }

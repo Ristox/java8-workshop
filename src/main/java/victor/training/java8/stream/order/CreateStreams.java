@@ -6,11 +6,15 @@ import victor.training.java8.stream.order.entity.Product;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
+import static java.nio.file.Files.isDirectory;
+import static java.nio.file.Files.list;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Stream.empty;
 import static java.util.stream.Stream.iterate;
 
 public class CreateStreams {
@@ -58,8 +62,19 @@ public class CreateStreams {
    }
 
    public Stream<String> p4_getAllPaths(File folder) {
-      // TODO print cannonical paths of all files in given directory and subdirectories
       System.out.println("folder = " + folder.getAbsolutePath());
-      return null;
+
+      return this.listFilesAt(folder.toPath());
+   }
+
+   private Stream<String> listFilesAt(Path path) {
+      if (!isDirectory(path)) {
+         return Stream.of(path.toString());
+      }
+      try {
+         return list(path).flatMap(this::listFilesAt);
+      } catch (IOException exception) {
+         return empty();
+      }
    }
 }
