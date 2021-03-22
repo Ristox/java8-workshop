@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Stream.iterate;
 
 public class CreateStreams {
 
@@ -45,7 +46,9 @@ public class CreateStreams {
    }
 
    public Stream<Integer> p2_createFibonacciStream() {
-      return Stream.of(1,1,2,3,5);
+      return iterate(new int[] {1, 1},
+                     (fibPair) -> new int[] { fibPair[1], fibPair[0] + fibPair[1] })
+              .map(fibPair -> fibPair[0]);
    }
 
    public Stream<Integer> p3_createPseudoRandomStream(int seed) {
