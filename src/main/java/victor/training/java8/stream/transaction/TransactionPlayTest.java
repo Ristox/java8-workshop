@@ -91,16 +91,18 @@ public class TransactionPlayTest {
 	@Test //7
 	public void max_transaction_value() {
 		OptionalInt max = play.findMaxTransactionValue();
-		
+
 		assertEquals(1000, max.orElse(0));
 	}
 
 	@Test
-	public void transaction_with_smallest_value() {
+	public void min_transaction_value() {
 		Transaction expected = tx[0];
-		Transaction min = null; // TODO
+		Transaction min = play.findMinTransactionValue(); // TODO
+
 		assertEquals(expected, min);
 	}
+
 	@Test
 	public void fibonacci_first_10() {
 		List<Integer> expected = Arrays.asList(1, 1, 2, 3, 5, 8, 13, 21, 34, 55);
