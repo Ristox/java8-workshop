@@ -89,7 +89,7 @@ public class TransactionPlayTest {
 	
 	@Test //7
 	public void max_transaction_value() {
-		int max = -1; // TODO
+		int max = play.findMaxTransactionValue(); // TODO
 		
 		assertEquals(1000, max);
 	}
