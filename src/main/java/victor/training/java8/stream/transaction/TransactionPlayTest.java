@@ -3,13 +3,13 @@ package victor.training.java8.stream.transaction;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.*;
-import java.util.function.BinaryOperator;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
-import static java.util.stream.Collectors.summingInt;
 import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -123,11 +123,11 @@ public class TransactionPlayTest {
 	@Test
 	public void a_transaction_from_2012() {
 		Transaction expected = tx[1];
-		Transaction tx2012 = play.findAnyTransactionFrom2012(); // TODO
+		Optional<Transaction> tx2012 = play.findAnyTransactionFrom2012();
 		
-		assertEquals(expected, tx2012);
+		assertEquals(expected, tx2012.orElse(null));
 	}
-	
+
 	@Test
 	public void uniqueCharactersOfManyWords() {
 		List<String> expected = Arrays.asList("a", "b", "c", "d", "f");

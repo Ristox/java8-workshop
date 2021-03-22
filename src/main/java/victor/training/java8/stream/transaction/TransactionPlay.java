@@ -73,4 +73,10 @@ public class TransactionPlay {
         return transactions.stream()
                 .min(comparing(Transaction::getValue));
     }
+
+    public Optional<Transaction> findAnyTransactionFrom2012() {
+        return transactions.stream()
+                .filter(tx -> tx.getYear() == 2012)
+                .findFirst();
+    }
 }
