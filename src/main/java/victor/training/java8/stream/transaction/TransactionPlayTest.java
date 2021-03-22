@@ -3,12 +3,13 @@ package victor.training.java8.stream.transaction;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.*;
+import java.util.function.BinaryOperator;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
+import static java.util.stream.Collectors.summingInt;
 import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -105,13 +106,19 @@ public class TransactionPlayTest {
 	}
 
 	@Test
-	public void fibonacci_first_10() {
-		List<Integer> expected = Arrays.asList(1, 1, 2, 3, 5, 8, 13, 21, 34, 55);
-		Stream<Integer> fibonacci = null; // TODO
+	public void fibonacci_first_16() {
+		List<Integer> expected = Arrays.asList(1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987);
 
-		List<Integer> fib10 = fibonacci.limit(10).collect(toList());
-		assertEquals(expected, fib10);
+		Stream<Integer> fibonacci = IntStream.iterate(0, i -> ++i).map(this::fib).boxed();
+
+		List<Integer> fib16 = fibonacci.limit(16).collect(toList());
+		assertEquals(expected, fib16);
 	}
+
+	private int fib(int n) {
+		return n < 2 ? 1 : fib(n - 2) + fib(n - 1);
+	}
+
 	
 	@Test
 	public void a_transaction_from_2012() {
