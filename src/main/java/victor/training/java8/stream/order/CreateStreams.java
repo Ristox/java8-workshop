@@ -29,15 +29,17 @@ public class CreateStreams {
    public List<OrderLine> p1_readOrderFromFile(File file) throws IOException {
 
       Stream<String> lines = Files.lines(file.toPath());
-      return lines
-         .map(line -> line.split(";"))
-         .filter(cell -> "LINE".equals(cell[0]))
-         .map(this::parseOrderLine)
-         .peek(this::validateOrderLine)
-         .collect(toList());
+      List<OrderLine> orderLines = lines
+              .map(line -> line.split(";"))
+              .filter(cell -> "LINE".equals(cell[0]))
+              .map(this::parseOrderLine)
+              .peek(this::validateOrderLine)
+              .collect(toList());
 
-      // TODO check the number of lines is >= 2
-
+      if (orderLines.size() < 2) {
+         throw new IllegalStateException("Number of lines must be >= 2!");
+      }
+      return orderLines;
    }
 
    private OrderLine parseOrderLine(String[] cells) {
