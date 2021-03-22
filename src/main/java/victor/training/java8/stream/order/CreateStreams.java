@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -52,7 +53,8 @@ public class CreateStreams {
    }
 
    public Stream<Integer> p3_createPseudoRandomStream(int seed) {
-      return Stream.of(1);
+      Random random = new Random(seed);
+      return random.ints(1000L, 1, 10_000_000).boxed();
    }
 
    public Stream<String> p4_getAllPaths(File folder) {
