@@ -86,7 +86,7 @@ public class TransactionPlayTest {
 		
 		assertEquals(2650, sum);
 	}
-	
+
 	@Test //7
 	public void max_transaction_value() {
 		int max = play.findMaxTransactionValue(); // TODO

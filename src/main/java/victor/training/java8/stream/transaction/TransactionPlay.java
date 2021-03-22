@@ -60,4 +60,11 @@ public class TransactionPlay {
                 .mapToInt(Transaction::getValue)
                 .sum();
     }
+
+    public int findMaxTransactionValue() {
+        return transactions.stream()
+                .mapToInt(Transaction::getValue)
+                .max()
+                .orElse(0);
+    }
 }
