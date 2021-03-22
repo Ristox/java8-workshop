@@ -2,6 +2,7 @@ package victor.training.java8.stream.transaction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalInt;
 
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.joining;
@@ -61,10 +62,9 @@ public class TransactionPlay {
                 .sum();
     }
 
-    public int findMaxTransactionValue() {
+    public OptionalInt findMaxTransactionValue() {
         return transactions.stream()
                 .mapToInt(Transaction::getValue)
-                .max()
-                .orElse(0);
+                .max();
     }
 }

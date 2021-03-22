@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -89,9 +90,9 @@ public class TransactionPlayTest {
 
 	@Test //7
 	public void max_transaction_value() {
-		int max = play.findMaxTransactionValue(); // TODO
+		OptionalInt max = play.findMaxTransactionValue();
 		
-		assertEquals(1000, max);
+		assertEquals(1000, max.orElse(0));
 	}
 
 	@Test
