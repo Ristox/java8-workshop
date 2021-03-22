@@ -50,7 +50,7 @@ public class TransactionPlayTest {
 	public void unique_cities_of_the_traders() {
 		List<String> expected = Arrays.asList("Cambridge", "Milan");
 		
-		List<String> list = null; // TODO
+		List<String> list = play.listUniqueCitiesOfTraders(); // TODO
 
 		assertEquals(expected, list); 									
 	}
