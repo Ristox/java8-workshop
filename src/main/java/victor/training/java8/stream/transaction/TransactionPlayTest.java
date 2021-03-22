@@ -10,6 +10,7 @@ import java.util.OptionalInt;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
 import static java.util.stream.Stream.iterate;
@@ -159,6 +160,19 @@ public class TransactionPlayTest {
 
 		List<Integer> fib16 = fibonacci.limit(16).collect(toList());
 		assertEquals(expected, fib16);
+	}
+
+	@Test
+	public void alternative_uniqueCharactersOfManyWords() {
+		List<String> expected = Arrays.asList("a", "b", "c", "d", "f");
+		List<String> words = Arrays.asList("abcd", "acdf");
+
+		List<String> actual = words.stream()
+				.flatMap(word -> stream(word.split("")))
+				.distinct()
+				.collect(toList());
+
+		assertEquals(expected, actual);
 	}
 	
 	
