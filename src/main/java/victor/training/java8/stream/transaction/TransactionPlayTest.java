@@ -1,5 +1,6 @@
 package victor.training.java8.stream.transaction;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -28,14 +29,21 @@ public class TransactionPlayTest {
 	);
 	
 	private Transaction[] tx = transactions.toArray(new Transaction[0]);
+
+	private TransactionPlay play;
+
+	@Before
+	public void prepareTest() {
+		play = new TransactionPlay(transactions);
+	}
 		
 	@Test //1
 	public void all_2011_transactions_sorted_by_value() {
 		List<Transaction> expected = Arrays.asList(tx[0], tx[2]);
 		
-		List<Transaction> list = null; // TODO
+		List<Transaction> list = play.sortAll2011TransactionsByValue(); // TODO
 		
-		assertEquals(expected, list); 									
+		assertEquals(expected, list);
 	}
 		
 	@Test //2
