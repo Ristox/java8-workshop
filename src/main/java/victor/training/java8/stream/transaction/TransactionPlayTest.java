@@ -59,11 +59,11 @@ public class TransactionPlayTest {
 	public void traders_from_Cambridge_sorted_by_name() {
 		List<Trader> expected = Arrays.asList(alan, brian, raoul);
 
-		List<Trader> list = play.listCambridgeTradersSortedByName(); // TODO
+		List<Trader> list = play.listCambridgeTradersSortedByName();
 		
 		assertEquals(expected, list);
 	}
-	
+
 	@Test //4
 	public void names_of_all_traders_sorted_joined() {
 		String expected = "Alan,Brian,Mario,Raoul";

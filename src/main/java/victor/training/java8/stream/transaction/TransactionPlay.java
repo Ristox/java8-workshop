@@ -28,4 +28,13 @@ public class TransactionPlay {
                 .distinct()
                 .collect(toList());
     }
+
+    public List<Trader> listCambridgeTradersSortedByName() {
+        return transactions.stream()
+                .map(Transaction::getTrader)
+                .filter(trader -> "Cambridge".equalsIgnoreCase(trader.getCity()))
+                .distinct()
+                .sorted(comparing(Trader::getName))
+                .collect(toList());
+    }
 }
