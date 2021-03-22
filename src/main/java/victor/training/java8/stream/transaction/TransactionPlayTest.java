@@ -120,7 +120,6 @@ public class TransactionPlayTest {
 		return n < 2 ? 1 : fib(n - 2) + fib(n - 1);
 	}
 
-	
 	@Test
 	public void a_transaction_from_2012() {
 		Transaction expected = tx[1];
