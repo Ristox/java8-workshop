@@ -82,7 +82,7 @@ public class TransactionPlayTest {
 
 	@Test //6 
 	public void sum_of_values_of_transactions_from_Cambridge_traders() { 
-		int sum = -1; // TODO
+		int sum = play.sumValuesOfCambridgeTradersTransactions();
 		
 		assertEquals(2650, sum);
 	}
