@@ -10,4 +10,8 @@ public class TurboEngine extends Engine {
         super(another);
     }
 
+    @Override
+    public Engine copy() {
+        return new TurboEngine(this);
+    }
 }

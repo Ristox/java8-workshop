@@ -6,8 +6,12 @@ public class Engine {
 
     }
 
-    public Engine(Engine another) {
+    protected Engine(Engine another) {
 
+    }
+
+    public Engine copy() {
+        return new Engine(this);
     }
 
     @Override

@@ -13,12 +13,7 @@ public class Car {
     public Car(Car anotherCar) {
         year = anotherCar.year;
 
-        // FIXME: BAD instance checking. Type coupling, VERY "open for modification".
-        if (anotherCar.engine instanceof TurboEngine) {
-            this.engine = new TurboEngine((TurboEngine) anotherCar.engine);
-        } else {
-            engine = new Engine(anotherCar.engine);
-        }
+        engine = anotherCar.engine.copy();
     }
 
     @Override
