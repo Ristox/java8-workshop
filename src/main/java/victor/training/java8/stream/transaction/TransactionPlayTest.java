@@ -68,7 +68,7 @@ public class TransactionPlayTest {
 	public void names_of_all_traders_sorted_joined() {
 		String expected = "Alan,Brian,Mario,Raoul";
 		
-		String joined = null; // TODO
+		String joined = play.outputSortedNamesOfAllTraders(); // TODO
 		
 		assertEquals(expected, joined);
 	}
@@ -94,7 +94,6 @@ public class TransactionPlayTest {
 		assertEquals(1000, max);
 	}
 
-	
 	@Test
 	public void transaction_with_smallest_value() {
 		Transaction expected = tx[0];
