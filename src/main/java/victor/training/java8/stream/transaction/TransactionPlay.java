@@ -47,4 +47,10 @@ public class TransactionPlay {
                 .sorted()
                 .collect(joining(","));
     }
+
+    public boolean areAnyTradersFromMilan() {
+        return transactions.stream()
+                .map(Transaction::getTrader)
+                .anyMatch(trader -> "Milan".equalsIgnoreCase(trader.getCity()));
+    }
 }

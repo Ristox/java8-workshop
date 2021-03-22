@@ -74,12 +74,12 @@ public class TransactionPlayTest {
 	}
 
 	@Test //5
-	public void any_traders_from_Milano() {
+	public void any_traders_from_Milan() {
 		boolean anyTradersFromMilan = play.areAnyTradersFromMilan();
 		
 		assertTrue(anyTradersFromMilan);
 	}
-	
+
 	@Test //6 
 	public void sum_of_values_of_transactions_from_Cambridge_traders() { 
 		int sum = -1; // TODO
