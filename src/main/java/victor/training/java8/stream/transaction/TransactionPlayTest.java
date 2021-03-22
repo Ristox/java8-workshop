@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.stream.Stream;
 
@@ -98,9 +99,9 @@ public class TransactionPlayTest {
 	@Test
 	public void find_transaction_with_smallest_value() {
 		Transaction expected = tx[0];
-		Transaction min = play.findTransactionWithSmallestValue();
+		Optional<Transaction> min = play.findTransactionWithSmallestValue();
 
-		assertEquals(expected, min);
+		assertEquals(expected, min.orElse(null));
 	}
 
 	@Test

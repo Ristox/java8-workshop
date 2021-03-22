@@ -2,6 +2,7 @@ package victor.training.java8.stream.transaction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.OptionalInt;
 
 import static java.util.Comparator.comparing;
@@ -68,9 +69,8 @@ public class TransactionPlay {
                 .max();
     }
 
-    public Transaction findTransactionWithSmallestValue() {
+    public Optional<Transaction> findTransactionWithSmallestValue() {
         return transactions.stream()
-                .min(comparing(Transaction::getValue))
-                .orElse(null);
+                .min(comparing(Transaction::getValue));
     }
 }
