@@ -74,10 +74,10 @@ public class TransactionPlayTest {
 	}
 
 	@Test //5
-	public void are_traders_in_Milano() {
-		boolean areTradersInMilan = false; // TODO
+	public void any_traders_from_Milano() {
+		boolean anyTradersFromMilan = play.areAnyTradersFromMilan();
 		
-		assertTrue(areTradersInMilan);
+		assertTrue(anyTradersFromMilan);
 	}
 	
 	@Test //6 
