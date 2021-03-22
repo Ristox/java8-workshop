@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -36,7 +35,6 @@ public class CreateStreamsTest {
    @Test(expected = IllegalArgumentException.class)
    public void p1_readOrderFromFile_throws() throws IOException {
       service.p1_readOrderFromFile(new File("test.invalid.txt")); // look at stacktrace
-      // TODO uncomment to see the exception trace :S
    }
 
    @Test
