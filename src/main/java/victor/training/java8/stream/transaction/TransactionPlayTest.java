@@ -123,7 +123,7 @@ public class TransactionPlayTest {
 	@Test
 	public void a_transaction_from_2012() {
 		Transaction expected = tx[1];
-		Transaction tx2012 = null; // TODO
+		Transaction tx2012 = play.findAnyTransactionFrom2012(); // TODO
 		
 		assertEquals(expected, tx2012);
 	}
